@@ -16,6 +16,14 @@ public class HomeController {
 
 	static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
+	/**
+	 * Example using a REST call that passes in two parameters and compares them.
+	 * 
+	 * @param first - First parameter
+	 * @param second - Second parameter
+	 * @param model - Stores key / value pair
+	 * @return name of view
+	 */
 	@RequestMapping(value = "/compare")
 	public String compare(@RequestParam(value = "input1", required = true) String first,
 			@RequestParam(value ="input2", required = true) String second, Model model) {
