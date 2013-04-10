@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class HomeController extends AbstractController {
 
 	static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
@@ -25,9 +25,11 @@ public class HomeController {
 	 * @return name of view
 	 */
 	@RequestMapping(value = "/compare")
-	public String compare(@RequestParam(value = "input1", required = true) String first,
-			@RequestParam(value ="input2", required = true) String second, Model model) {
-		LOG.debug("compare.html, parameters: {}, {}", first, second);
+	public String compare(
+			@RequestParam(value = "input1", required = true) String first,
+			@RequestParam(value = "input2", required = true) String second,
+			Model model) {
+		LOG.debug("compare, parameters: {}, {}", first, second);
 
 		int result = StringUtils.length(first) - StringUtils.length(second);
 		String inEnglish = (result < 0) ? "less than"

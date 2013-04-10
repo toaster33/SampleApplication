@@ -7,8 +7,23 @@
 	<display-name>sample</display-name>
 
 	<welcome-file-list>
-		<welcome-file>views/index.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- Needed to load configuration file. -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!--
+      - Location of the XML file that defines the root application context applied by ContextLoaderListener.
+     -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/applicationContext-security.xml
+        </param-value>
+	</context-param>
 
 	<servlet>
 		<servlet-name>sample</servlet-name>
@@ -24,4 +39,14 @@
 		<servlet-name>sample</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
