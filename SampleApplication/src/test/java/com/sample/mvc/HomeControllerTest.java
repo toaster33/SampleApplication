@@ -8,6 +8,7 @@ import org.springframework.ui.ExtendedModelMap;
 
 public class HomeControllerTest {
 
+	/** Verify method returns the name of the next view. */
 	@Test
 	public void testCompare() {
 		HomeController test = new HomeController();
